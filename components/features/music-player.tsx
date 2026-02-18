@@ -11,7 +11,7 @@ interface MusicPlayerProps {
 
 export default function MusicPlayer({ playing, onToggle }: MusicPlayerProps) {
     const audioRef = useRef<HTMLAudioElement>(null);
-    const [volume, setVolume] = useState(0.7);
+    const [volume, setVolume] = useState(0.5);
     const [muted, setMuted] = useState(false);
     const [expanded, setExpanded] = useState(false);
 
