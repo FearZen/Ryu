@@ -11,7 +11,7 @@ export default function LoadingScreen() {
         // Simulate loading or check session
         const timer = setTimeout(() => {
             setIsLoading(false)
-        }, 4500) // 4.5s splash screen
+        }, 6000) // 6s splash screen
 
         return () => clearTimeout(timer)
     }, [])
