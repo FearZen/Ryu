@@ -35,9 +35,6 @@ export default function Footer() {
                     {/* Navigation Column */}
                     <div className="flex flex-col gap-4">
                         <h3 className="text-white font-bold tracking-widest uppercase text-sm mb-2">Navigation</h3>
-                        <Link href="/crafting" className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 w-fit">
-                            <Hammer className="w-4 h-4" /> Crafting Blueprints
-                        </Link>
                         <Link href="/map" className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-2 w-fit">
                             <Map className="w-4 h-4" /> Territory Map
                         </Link>
