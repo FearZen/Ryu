@@ -26,7 +26,9 @@ export const metadata: Metadata = {
   title: "RYU",
   description: "Official Portal of Ryu Sixnine",
   icons: {
-    icon: "/ryu.gif",
+    icon: "/ryunaga3.png?v=2",
+    shortcut: "/ryunaga3.png?v=2",
+    apple: "/ryunaga3.png?v=2",
   },
 };
 
