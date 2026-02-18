@@ -127,7 +127,10 @@ export default function EditCraftingItemPage({ params }: { params: Promise<{ id:
                                 <ImageUpload
                                     bucketName="crafting-images"
                                     initialImage={imageUrl}
-                                    onUpload={(url) => setImageUrl(url as string)}
+                                    onUpload={(url) => {
+                                        const finalUrl = Array.isArray(url) ? url[0] : url
+                                        setImageUrl(finalUrl || '')
+                                    }}
                                 />
                             </div>
                         </div>

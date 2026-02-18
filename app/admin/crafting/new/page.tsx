@@ -70,7 +70,10 @@ export default function NewCraftingItemPage() {
                             <div className="border border-white/10 rounded-xl overflow-hidden bg-slate-900">
                                 <ImageUpload
                                     bucketName="crafting-images"
-                                    onUpload={(url) => setImageUrl(url as string)}
+                                    onUpload={(url) => {
+                                        const finalUrl = Array.isArray(url) ? url[0] : url
+                                        setImageUrl(finalUrl || '')
+                                    }}
                                 />
                             </div>
                         </div>

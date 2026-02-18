@@ -139,7 +139,15 @@ export default function NewMapLocationPage() {
                             <div className="space-y-2">
                                 <label className="block text-sm font-medium text-slate-400">Location Image</label>
                                 <div className="border border-white/10 rounded-xl overflow-hidden bg-black/50">
-                                    <ImageUpload onUpload={(url) => setImageUrl(url)} />
+                                    <ImageUpload
+                                        onUpload={(url) => {
+                                            if (Array.isArray(url)) {
+                                                setImageUrl(url[0] || null)
+                                            } else {
+                                                setImageUrl(url)
+                                            }
+                                        }}
+                                    />
                                 </div>
                             </div>
                         </div>

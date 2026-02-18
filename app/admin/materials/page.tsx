@@ -213,7 +213,10 @@ export default function MaterialsPage() {
                                     <div className="flex-1">
                                         <ImageUpload
                                             bucketName="crafting-images"
-                                            onUpload={(url) => setCurrentMaterial(prev => ({ ...prev, image_url: url as string }))}
+                                            onUpload={(url) => {
+                                                const finalUrl = Array.isArray(url) ? url[0] : url
+                                                setCurrentMaterial(prev => ({ ...prev, image_url: finalUrl || null }))
+                                            }}
                                         />
                                     </div>
                                 </div>
