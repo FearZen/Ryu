@@ -11,7 +11,7 @@ export default function LoadingScreen() {
         // Simulate loading or check session
         const timer = setTimeout(() => {
             setIsLoading(false)
-        }, 2500) // 2.5s splash screen
+        }, 4500) // 4.5s splash screen
 
         return () => clearTimeout(timer)
     }, [])
@@ -23,7 +23,7 @@ export default function LoadingScreen() {
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.8, ease: 'easeInOut' }}
-                    className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black"
+                    className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black"
                 >
                     {/* Background Gradient */}
                     <div className="absolute inset-0 bg-gradient-to-br from-black via-slate-900 to-blue-950 opacity-80" />
@@ -55,7 +55,7 @@ export default function LoadingScreen() {
                         <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: 200 }}
-                            transition={{ duration: 2, ease: "easeInOut" }}
+                            transition={{ duration: 4, ease: "easeInOut" }}
                             className="h-1 mt-8 bg-gradient-to-r from-transparent via-cyan-500 to-transparent rounded-full"
                         />
                     </motion.div>
