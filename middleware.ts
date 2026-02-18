@@ -39,19 +39,21 @@ export async function middleware(request: NextRequest) {
 
     const path = request.nextUrl.pathname
 
-    // PROTECTED ROUTES (Require Login OR Member Access)
-    const protectedRoutes = ['/dashboard', '/crafting', '/treasury', '/hierarchy']
+    // PROTECTED ROUTES (Admin Only)
+    // We relax member route protection to AccessGate (client-side) because cookie reliability
+    // can be flaky for the simple access-code flow.
+    // const protectedRoutes = ['/dashboard', '/crafting', '/treasury', '/hierarchy']
     const adminOnlyRoutes = ['/admin', '/gallery/upload']
-    const isProtectedRoute = protectedRoutes.some(route => path.startsWith(route))
+    // const isProtectedRoute = protectedRoutes.some(route => path.startsWith(route))
     const isAdminOnlyRoute = adminOnlyRoutes.some(route => path.startsWith(route))
 
     // Check for member access cookie
     const hasMemberAccess = request.cookies.get('ryu_member_access')?.value === 'true'
 
-    // Member routes (dashboard, crafting, treasury, hierarchy) - allow if user OR member access
-    if (isProtectedRoute && !user && !hasMemberAccess) {
-        return NextResponse.redirect(new URL('/login', request.url))
-    }
+    // Member routes logic moved to client-side AccessGate components
+    // if (isProtectedRoute && !user && !hasMemberAccess) {
+    //    return NextResponse.redirect(new URL('/login', request.url))
+    // }
 
     // Admin-only routes - require actual user login
     if (isAdminOnlyRoute && !user) {

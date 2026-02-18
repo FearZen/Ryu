@@ -1,6 +1,7 @@
 import AnimatedHierarchy from "@/components/features/animated-hierarchy";
 import { createClient } from "@/lib/supabase/server";
 import SmartBackButton from "@/components/ui/smart-back-button";
+import AccessGate from "@/components/features/access-gate";
 
 export const revalidate = 0 // Ensure fresh data on every request
 
@@ -16,17 +17,18 @@ export default async function HierarchyPage() {
 
     return (
         <div className="min-h-screen bg-black text-white relative">
+            <AccessGate>
+                {/* Ambient Background Grid */}
+                <div className="fixed inset-0 bg-[url('/grid.svg')] opacity-10 pointer-events-none z-0" />
 
-            {/* Ambient Background Grid */}
-            <div className="fixed inset-0 bg-[url('/grid.svg')] opacity-10 pointer-events-none z-0" />
+                <div className="relative z-30 pt-24 px-4 max-w-7xl mx-auto">
+                    <SmartBackButton />
+                </div>
 
-            <div className="relative z-30 pt-24 px-4 max-w-7xl mx-auto">
-                <SmartBackButton />
-            </div>
-
-            <div className="-mt-16">
-                <AnimatedHierarchy initialRoster={roster || []} />
-            </div>
+                <div className="-mt-16">
+                    <AnimatedHierarchy initialRoster={roster || []} />
+                </div>
+            </AccessGate>
         </div>
     )
 }
