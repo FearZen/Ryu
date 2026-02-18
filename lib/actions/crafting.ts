@@ -75,7 +75,8 @@ export async function deleteCraftingItem(id: string) {
         .eq('id', id)
 
     if (error) {
-        return { error: error.message }
+        console.error('Error deleting item:', error)
+        throw new Error(error.message)
     }
 
     revalidatePath('/crafting')
